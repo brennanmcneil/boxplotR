@@ -1,0 +1,22 @@
+
+#boxplot
+
+install.packages("ggplot2")
+
+library(ggplot2)
+
+fill <- "#4271AE"
+line <- "#1F3552"
+
+TYHMEInc <- read.csv(file = "TimeYieldHMEIncrements.csv", header = TRUE)
+TYHMEInc <- transform(TYHMEInc, Hours = reorder(Hours, Volume))
+
+Pinc <- ggplot(TYHMEInc, aes(x= Hours, y= Volume)) +
+geom_boxplot(fill = fill, colour = line, alpha = 0.7, outlier.color = "#1F3552", outlier.shape = 20) + 
+ggtitle("HME Dwell Time vs. Fluid Yield") + 
+theme_bw() +
+theme(plot.title = element_text(size = 14, family = "Tahoma", face = "bold"), text = element_text(size = 12, family = "Tahoma"), 
+axis.title = element_text(face ="bold"), axis.text.x =element_text(size = 11))
+
+#scatterplot
+
